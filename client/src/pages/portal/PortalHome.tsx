@@ -97,52 +97,53 @@ export default function PortalHome() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100">
       <PortalNavbar />
 
       {/* Animated Banner */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden bg-gray-900">
         {bannerMessages.map((banner, index) => (
           <div
             key={index}
-            className={`${banner.color} text-white py-3 px-4 text-center font-medium transition-all duration-500 absolute w-full ${
-              index === currentBannerIndex
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 -translate-y-full'
-            }`}
-            style={{ position: index === currentBannerIndex ? 'relative' : 'absolute' }}
+            className="text-white py-3 px-4 text-center font-medium transition-all duration-500 absolute w-full"
+            style={{ 
+              position: index === currentBannerIndex ? 'relative' : 'absolute',
+              opacity: index === currentBannerIndex ? 1 : 0,
+              transform: index === currentBannerIndex ? 'translateY(0)' : 'translateY(-100%)'
+            }}
             data-testid={`banner-message-${index}`}
           >
             <span className="text-lg mr-2">{banner.icon}</span>
             {banner.text}
+            <span className="ml-2 text-orange-400">•</span>
           </div>
         ))}
       </div>
 
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 text-white py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-yellow-400/20 rounded-full blur-3xl"></div>
-        <div className="absolute -top-10 -right-10 w-72 h-72 bg-orange-300/20 rounded-full blur-3xl"></div>
+      <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 right-0 w-80 h-80 bg-yellow-500/10 rounded-full blur-3xl"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-block animate-pulse mb-4">
-            <span className="text-6xl md:text-7xl">🔥</span>
+          <div className="inline-block mb-6">
+            <span className="text-6xl md:text-7xl animate-pulse">🔥</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight" data-testid="text-hero-title">
-            Bem-vindo à <span className="text-yellow-300">UMP Emaús</span>
+            Bem-vindo à <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">UMP Emaús</span>
           </h1>
-          <p className="text-2xl md:text-3xl mb-6 font-semibold text-orange-50">
+          <p className="text-2xl md:text-3xl mb-6 font-semibold text-gray-300">
             União de Mocidade Presbiteriana
           </p>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-orange-100">
+          <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-gray-400">
             Um espaço de fé, comunhão e crescimento espiritual para jovens
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/portal/devocionais">
               <Button 
                 size="lg" 
-                className="bg-white text-orange-600 hover:bg-orange-50 font-bold px-8 py-6 text-lg"
+                className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold px-8 py-6 text-lg shadow-lg shadow-orange-500/30"
                 data-testid="button-hero-devocionais"
               >
                 📖 Ver Devocionais
@@ -152,7 +153,7 @@ export default function PortalHome() {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-6 text-lg"
+                className="bg-transparent border-2 border-gray-600 text-gray-200 hover:bg-gray-800 hover:border-orange-400 hover:text-orange-400 font-bold px-8 py-6 text-lg"
                 data-testid="button-hero-programacoes"
               >
                 📅 Próximas Programações
@@ -166,49 +167,49 @@ export default function PortalHome() {
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
           <Link href="/portal/devocionais">
-            <Card className="hover:shadow-xl hover:scale-105 transition-all cursor-pointer border-2 hover:border-orange-500 group" data-testid="card-devocionais">
+            <Card className="hover:shadow-2xl hover:-translate-y-1 transition-all cursor-pointer bg-white border border-gray-200 hover:border-orange-400 group" data-testid="card-devocionais">
               <CardContent className="pt-6 text-center">
-                <div className="bg-orange-100 group-hover:bg-orange-500 transition-colors rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="h-8 w-8 text-orange-500 group-hover:text-white transition-colors" />
+                <div className="bg-gradient-to-br from-orange-400 to-yellow-400 group-hover:from-orange-500 group-hover:to-yellow-500 transition-all rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                  <BookOpen className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="font-bold text-lg mb-1 group-hover:text-orange-600 transition-colors">Devocionais</h3>
-                <p className="text-sm text-gray-600">Reflexões diárias</p>
+                <h3 className="font-bold text-lg mb-1 text-gray-800 group-hover:text-orange-600 transition-colors">Devocionais</h3>
+                <p className="text-sm text-gray-500">Reflexões diárias</p>
               </CardContent>
             </Card>
           </Link>
 
           <Link href="/portal/oracao">
-            <Card className="hover:shadow-xl hover:scale-105 transition-all cursor-pointer border-2 hover:border-orange-500 group" data-testid="card-oracao">
+            <Card className="hover:shadow-2xl hover:-translate-y-1 transition-all cursor-pointer bg-white border border-gray-200 hover:border-orange-400 group" data-testid="card-oracao">
               <CardContent className="pt-6 text-center">
-                <div className="bg-orange-100 group-hover:bg-orange-500 transition-colors rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <Heart className="h-8 w-8 text-orange-500 group-hover:text-white transition-colors" />
+                <div className="bg-gradient-to-br from-orange-400 to-yellow-400 group-hover:from-orange-500 group-hover:to-yellow-500 transition-all rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                  <Heart className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="font-bold text-lg mb-1 group-hover:text-orange-600 transition-colors">Pedidos de Oração</h3>
-                <p className="text-sm text-gray-600">Compartilhe seu pedido</p>
+                <h3 className="font-bold text-lg mb-1 text-gray-800 group-hover:text-orange-600 transition-colors">Pedidos de Oração</h3>
+                <p className="text-sm text-gray-500">Compartilhe seu pedido</p>
               </CardContent>
             </Card>
           </Link>
 
           <Link href="/portal/programacoes">
-            <Card className="hover:shadow-xl hover:scale-105 transition-all cursor-pointer border-2 hover:border-orange-500 group" data-testid="card-programacoes">
+            <Card className="hover:shadow-2xl hover:-translate-y-1 transition-all cursor-pointer bg-white border border-gray-200 hover:border-orange-400 group" data-testid="card-programacoes">
               <CardContent className="pt-6 text-center">
-                <div className="bg-orange-100 group-hover:bg-orange-500 transition-colors rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <Calendar className="h-8 w-8 text-orange-500 group-hover:text-white transition-colors" />
+                <div className="bg-gradient-to-br from-orange-400 to-yellow-400 group-hover:from-orange-500 group-hover:to-yellow-500 transition-all rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                  <Calendar className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="font-bold text-lg mb-1 group-hover:text-orange-600 transition-colors">Programações</h3>
-                <p className="text-sm text-gray-600">Próximos eventos</p>
+                <h3 className="font-bold text-lg mb-1 text-gray-800 group-hover:text-orange-600 transition-colors">Programações</h3>
+                <p className="text-sm text-gray-500">Próximos eventos</p>
               </CardContent>
             </Card>
           </Link>
 
           <Link href="/portal/diretoria">
-            <Card className="hover:shadow-xl hover:scale-105 transition-all cursor-pointer border-2 hover:border-orange-500 group" data-testid="card-diretoria">
+            <Card className="hover:shadow-2xl hover:-translate-y-1 transition-all cursor-pointer bg-white border border-gray-200 hover:border-orange-400 group" data-testid="card-diretoria">
               <CardContent className="pt-6 text-center">
-                <div className="bg-orange-100 group-hover:bg-orange-500 transition-colors rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-8 w-8 text-orange-500 group-hover:text-white transition-colors" />
+                <div className="bg-gradient-to-br from-orange-400 to-yellow-400 group-hover:from-orange-500 group-hover:to-yellow-500 transition-all rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                  <Users className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="font-bold text-lg mb-1 group-hover:text-orange-600 transition-colors">Diretoria</h3>
-                <p className="text-sm text-gray-600">Conheça nossa equipe</p>
+                <h3 className="font-bold text-lg mb-1 text-gray-800 group-hover:text-orange-600 transition-colors">Diretoria</h3>
+                <p className="text-sm text-gray-500">Conheça nossa equipe</p>
               </CardContent>
             </Card>
           </Link>
@@ -221,17 +222,20 @@ export default function PortalHome() {
               Últimos Devocionais
             </h2>
             <Link href="/portal/devocionais">
-              <Button variant="outline" data-testid="button-ver-mais-devocionais">
+              <Button variant="outline" className="border-gray-300 hover:border-orange-400 hover:text-orange-600" data-testid="button-ver-mais-devocionais">
                 Ver Todos
               </Button>
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {mockDevocionais.map((dev) => (
-              <Card key={dev.id} className="hover:shadow-lg transition-shadow">
+              <Card key={dev.id} className="hover:shadow-xl transition-all hover:-translate-y-1 bg-white border border-gray-200">
                 <CardHeader>
-                  <CardTitle className="text-orange-600">{dev.titulo}</CardTitle>
-                  <CardDescription>{dev.versiculo}</CardDescription>
+                  <CardTitle className="text-gray-800 flex items-center gap-2">
+                    <span className="text-orange-500">📖</span>
+                    {dev.titulo}
+                  </CardTitle>
+                  <CardDescription className="text-orange-600 font-medium">{dev.versiculo}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">{dev.preview}</p>
@@ -252,18 +256,21 @@ export default function PortalHome() {
               Próximas Programações
             </h2>
             <Link href="/portal/programacoes">
-              <Button variant="outline" data-testid="button-ver-mais-programacoes">
+              <Button variant="outline" className="border-gray-300 hover:border-orange-400 hover:text-orange-600" data-testid="button-ver-mais-programacoes">
                 Ver Todas
               </Button>
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {mockProgramacoes.map((prog) => (
-              <Card key={prog.id} className="hover:shadow-lg transition-shadow">
+              <Card key={prog.id} className="hover:shadow-xl transition-all hover:-translate-y-1 bg-white border border-gray-200">
                 <CardHeader>
-                  <CardTitle>{prog.titulo}</CardTitle>
-                  <CardDescription className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
+                  <CardTitle className="text-gray-800 flex items-center gap-2">
+                    <span className="text-orange-500">📅</span>
+                    {prog.titulo}
+                  </CardTitle>
+                  <CardDescription className="flex items-center gap-2 text-gray-600">
+                    <Calendar className="h-4 w-4 text-orange-500" />
                     {prog.data}
                   </CardDescription>
                 </CardHeader>
