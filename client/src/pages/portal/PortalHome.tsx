@@ -120,58 +120,94 @@ export default function PortalHome() {
       </div>
 
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4" data-testid="text-hero-title">
-            Bem-vindo à UMP Emaús
+      <div className="relative bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 text-white py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-yellow-400/20 rounded-full blur-3xl"></div>
+        <div className="absolute -top-10 -right-10 w-72 h-72 bg-orange-300/20 rounded-full blur-3xl"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-block animate-pulse mb-4">
+            <span className="text-6xl md:text-7xl">🔥</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight" data-testid="text-hero-title">
+            Bem-vindo à <span className="text-yellow-300">UMP Emaús</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-orange-100">
+          <p className="text-2xl md:text-3xl mb-6 font-semibold text-orange-50">
             União de Mocidade Presbiteriana
           </p>
-          <p className="text-lg max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-orange-100">
             Um espaço de fé, comunhão e crescimento espiritual para jovens
           </p>
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/portal/devocionais">
+              <Button 
+                size="lg" 
+                className="bg-white text-orange-600 hover:bg-orange-50 font-bold px-8 py-6 text-lg"
+                data-testid="button-hero-devocionais"
+              >
+                📖 Ver Devocionais
+              </Button>
+            </Link>
+            <Link href="/portal/programacoes">
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-6 text-lg"
+                data-testid="button-hero-programacoes"
+              >
+                📅 Próximas Programações
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
           <Link href="/portal/devocionais">
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer" data-testid="card-devocionais">
+            <Card className="hover:shadow-xl hover:scale-105 transition-all cursor-pointer border-2 hover:border-orange-500 group" data-testid="card-devocionais">
               <CardContent className="pt-6 text-center">
-                <BookOpen className="h-12 w-12 text-orange-500 mx-auto mb-3" />
-                <h3 className="font-semibold text-lg">Devocionais</h3>
+                <div className="bg-orange-100 group-hover:bg-orange-500 transition-colors rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="h-8 w-8 text-orange-500 group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="font-bold text-lg mb-1 group-hover:text-orange-600 transition-colors">Devocionais</h3>
                 <p className="text-sm text-gray-600">Reflexões diárias</p>
               </CardContent>
             </Card>
           </Link>
 
           <Link href="/portal/oracao">
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer" data-testid="card-oracao">
+            <Card className="hover:shadow-xl hover:scale-105 transition-all cursor-pointer border-2 hover:border-orange-500 group" data-testid="card-oracao">
               <CardContent className="pt-6 text-center">
-                <Heart className="h-12 w-12 text-orange-500 mx-auto mb-3" />
-                <h3 className="font-semibold text-lg">Pedidos de Oração</h3>
+                <div className="bg-orange-100 group-hover:bg-orange-500 transition-colors rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <Heart className="h-8 w-8 text-orange-500 group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="font-bold text-lg mb-1 group-hover:text-orange-600 transition-colors">Pedidos de Oração</h3>
                 <p className="text-sm text-gray-600">Compartilhe seu pedido</p>
               </CardContent>
             </Card>
           </Link>
 
           <Link href="/portal/programacoes">
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer" data-testid="card-programacoes">
+            <Card className="hover:shadow-xl hover:scale-105 transition-all cursor-pointer border-2 hover:border-orange-500 group" data-testid="card-programacoes">
               <CardContent className="pt-6 text-center">
-                <Calendar className="h-12 w-12 text-orange-500 mx-auto mb-3" />
-                <h3 className="font-semibold text-lg">Programações</h3>
+                <div className="bg-orange-100 group-hover:bg-orange-500 transition-colors rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <Calendar className="h-8 w-8 text-orange-500 group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="font-bold text-lg mb-1 group-hover:text-orange-600 transition-colors">Programações</h3>
                 <p className="text-sm text-gray-600">Próximos eventos</p>
               </CardContent>
             </Card>
           </Link>
 
           <Link href="/portal/diretoria">
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer" data-testid="card-diretoria">
+            <Card className="hover:shadow-xl hover:scale-105 transition-all cursor-pointer border-2 hover:border-orange-500 group" data-testid="card-diretoria">
               <CardContent className="pt-6 text-center">
-                <Users className="h-12 w-12 text-orange-500 mx-auto mb-3" />
-                <h3 className="font-semibold text-lg">Diretoria</h3>
+                <div className="bg-orange-100 group-hover:bg-orange-500 transition-colors rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-8 w-8 text-orange-500 group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="font-bold text-lg mb-1 group-hover:text-orange-600 transition-colors">Diretoria</h3>
                 <p className="text-sm text-gray-600">Conheça nossa equipe</p>
               </CardContent>
             </Card>
@@ -275,14 +311,26 @@ export default function PortalHome() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-400">
-            © 2025 UMP Emaús - União de Mocidade Presbiteriana
-          </p>
-          <p className="text-sm text-gray-500 mt-2">
-            "Porque de Deus somos cooperadores" - 1 Coríntios 3:9
-          </p>
+      <footer className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-12 mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <div className="inline-block mb-4">
+              <span className="text-5xl">🔥</span>
+            </div>
+            <h3 className="text-2xl font-bold text-orange-400 mb-2">UMP Emaús</h3>
+            <p className="text-gray-300 mb-4">
+              União de Mocidade Presbiteriana
+            </p>
+          </div>
+          
+          <div className="border-t border-gray-700 pt-6 text-center">
+            <p className="text-gray-400 mb-2">
+              © 2025 UMP Emaús - Todos os direitos reservados
+            </p>
+            <p className="text-sm text-orange-300 font-semibold italic">
+              "Porque de Deus somos cooperadores" - 1 Coríntios 3:9
+            </p>
+          </div>
         </div>
       </footer>
     </div>
