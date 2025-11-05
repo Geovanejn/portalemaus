@@ -29,13 +29,10 @@ export default function PortalNavbar() {
   return (
     <nav className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 border-b border-gray-600 sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-20 md:h-32">
           <div className="flex items-center space-x-8">
-            <Link href="/portal" className="flex items-center space-x-2" data-testid="link-home">
-              <img src={logoUrl} alt="UMP Emaús" className="h-10 w-10" />
-              <span className="font-bold text-xl bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent hidden sm:inline">
-                UMP Emaús
-              </span>
+            <Link href="/portal" className="flex items-center" data-testid="link-home">
+              <img src={logoUrl} alt="UMP Emaús" className="h-16 w-16 md:h-28 md:w-28" />
             </Link>
 
             <div className="hidden md:flex space-x-6">
