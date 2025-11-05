@@ -54,18 +54,18 @@ export default function PrayerRequests() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100">
       <PortalNavbar />
 
-      <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-16">
+      <div className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-4">
-            <Heart className="h-12 w-12" />
-            <h1 className="text-4xl md:text-5xl font-bold" data-testid="text-page-title">
+            <Heart className="h-12 w-12 text-orange-400" />
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent" data-testid="text-page-title">
               Pedidos de Oração
             </h1>
           </div>
-          <p className="text-xl text-orange-100">
+          <p className="text-xl text-gray-300">
             Compartilhe seus pedidos conosco. Estamos orando por você!
           </p>
         </div>
@@ -74,9 +74,9 @@ export default function PrayerRequests() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Formulário */}
-          <Card>
+          <Card className="bg-white border border-gray-200 hover:shadow-xl transition-shadow">
             <CardHeader>
-              <CardTitle className="text-2xl">Deixe seu Pedido</CardTitle>
+              <CardTitle className="text-2xl text-gray-800">Deixe seu Pedido</CardTitle>
               <CardDescription>
                 Preencha o formulário abaixo e nossa equipe estará orando por você
               </CardDescription>
@@ -132,7 +132,11 @@ export default function PrayerRequests() {
                   />
                 </div>
 
-                <Button type="submit" className="w-full" data-testid="button-submit">
+                <Button 
+                  type="submit" 
+                  className="w-full bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold" 
+                  data-testid="button-submit"
+                >
                   <Send className="mr-2 h-4 w-4" />
                   Enviar Pedido
                 </Button>
@@ -148,11 +152,11 @@ export default function PrayerRequests() {
             </h2>
             <div className="space-y-4">
               {mockPedidos.map((pedido) => (
-                <Card key={pedido.id} className="hover:shadow-lg transition-shadow">
+                <Card key={pedido.id} className="hover:shadow-xl hover:-translate-y-1 transition-all bg-white border border-gray-200">
                   <CardContent className="pt-6">
                     <div className="flex items-start gap-3">
-                      <div className="h-10 w-10 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
-                        <Heart className="h-5 w-5 text-orange-600" />
+                      <div className="h-10 w-10 rounded-full bg-gradient-to-br from-orange-400 to-yellow-400 flex items-center justify-center flex-shrink-0">
+                        <Heart className="h-5 w-5 text-white" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">

@@ -73,18 +73,18 @@ export default function Events() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100">
       <PortalNavbar />
 
-      <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-16">
+      <div className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-4">
-            <Calendar className="h-12 w-12" />
-            <h1 className="text-4xl md:text-5xl font-bold" data-testid="text-page-title">
+            <Calendar className="h-12 w-12 text-orange-400" />
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent" data-testid="text-page-title">
               Programações
             </h1>
           </div>
-          <p className="text-xl text-orange-100">
+          <p className="text-xl text-gray-300">
             Fique por dentro dos próximos eventos e atividades
           </p>
         </div>
@@ -93,7 +93,7 @@ export default function Events() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {mockEventos.map((evento) => (
-            <Card key={evento.id} className="overflow-hidden hover:shadow-xl transition-shadow" data-testid={`card-evento-${evento.id}`}>
+            <Card key={evento.id} className="overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all bg-white border border-gray-200" data-testid={`card-evento-${evento.id}`}>
               {/* Imagem */}
               <div className="relative h-48 overflow-hidden">
                 <img

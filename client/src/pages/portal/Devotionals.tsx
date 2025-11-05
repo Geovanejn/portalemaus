@@ -66,18 +66,18 @@ export default function Devotionals() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100">
       <PortalNavbar />
 
-      <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-16">
+      <div className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-4">
-            <BookOpen className="h-12 w-12" />
-            <h1 className="text-4xl md:text-5xl font-bold" data-testid="text-page-title">
+            <BookOpen className="h-12 w-12 text-orange-400" />
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent" data-testid="text-page-title">
               Devocionais
             </h1>
           </div>
-          <p className="text-xl text-orange-100">
+          <p className="text-xl text-gray-300">
             Reflexões diárias para fortalecer sua fé
           </p>
         </div>
@@ -101,19 +101,21 @@ export default function Devotionals() {
         {/* Devocionais Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredDevocionais.map((dev) => (
-            <Card key={dev.id} className="hover:shadow-xl transition-all cursor-pointer group" data-testid={`card-devocional-${dev.id}`}>
+            <Card key={dev.id} className="hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group bg-white border border-gray-200" data-testid={`card-devocional-${dev.id}`}>
               <CardHeader>
                 <div className="flex items-start justify-between mb-2">
-                  <BookOpen className="h-8 w-8 text-orange-500 group-hover:scale-110 transition-transform" />
+                  <div className="bg-gradient-to-br from-orange-400 to-yellow-400 group-hover:from-orange-500 group-hover:to-yellow-500 transition-all rounded-full w-12 h-12 flex items-center justify-center">
+                    <BookOpen className="h-6 w-6 text-white" />
+                  </div>
                   <span className="text-xs text-gray-500 flex items-center gap-1">
-                    <Calendar className="h-3 w-3" />
+                    <Calendar className="h-3 w-3 text-orange-500" />
                     {new Date(dev.data).toLocaleDateString('pt-BR')}
                   </span>
                 </div>
-                <CardTitle className="text-xl text-orange-600 group-hover:text-orange-700">
+                <CardTitle className="text-xl text-gray-800 group-hover:text-orange-600 transition-colors">
                   {dev.titulo}
                 </CardTitle>
-                <CardDescription className="font-medium text-gray-700">
+                <CardDescription className="font-medium text-orange-600">
                   {dev.versiculo}
                 </CardDescription>
               </CardHeader>
