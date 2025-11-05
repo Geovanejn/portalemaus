@@ -1,10 +1,17 @@
-# Emaús Vota - Election Management System
+# Portal UMP Emaús - Sistema Integrado de Gestão e Votação
 
 ## Overview
-Emaús Vota is a full-stack web application designed to manage elections for the UMP Emaús church youth group. It includes features like email authentication, role-based access, election creation and management, secure voting, and real-time results. The system aims for transparency and accessibility, offering shareable results and PDF audit reports. The project is expanding into "Portal UMP Emaús," a comprehensive church portal integrating devotionals, prayer requests, an event calendar, a board directory, and Instagram integration, with the voting system as a core module.
+Portal UMP Emaús is a comprehensive full-stack web application for the UMP Emaús church youth group. It integrates a voting/election management system with devotionals, prayer requests, an events calendar, and a board directory. The portal features a modern, mobile-first design with a gray/orange color palette, rotating hero banner, and accessible UI components.
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.
+
+## Recent Changes (November 2025)
+- Implemented large rotating hero banner with images, animations, and navigation controls
+- Applied gray/black and orange/yellow color palette across all portal pages
+- Updated navbar with gradient background and orange accent highlights
+- Standardized card styling: white backgrounds, gray borders, orange/yellow icon accents
+- Enhanced transitions and hover effects for improved UX
 
 ## System Architecture
 
