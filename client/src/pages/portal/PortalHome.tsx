@@ -3,8 +3,46 @@ import { Calendar, Heart, BookOpen, Users, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import PortalNavbar from "@/components/PortalNavbar";
+import { useState, useEffect } from "react";
 
 export default function PortalHome() {
+  const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
+
+  const bannerMessages = [
+    {
+      icon: "📢",
+      text: "Próximo Culto de Jovens - Sábado às 19h na Igreja Presbiteriana",
+      color: "bg-orange-500"
+    },
+    {
+      icon: "🙏",
+      text: "Semana de Oração - Participe das 6h às 7h todos os dias",
+      color: "bg-orange-600"
+    },
+    {
+      icon: "🎉",
+      text: "Retiro Espiritual 2025 - Inscrições abertas! 15-17 de Novembro",
+      color: "bg-orange-500"
+    },
+    {
+      icon: "📖",
+      text: "Novos devocionais disponíveis - Confira as reflexões da semana",
+      color: "bg-orange-600"
+    },
+    {
+      icon: "✨",
+      text: "Siga @umpemaus no Instagram para ficar por dentro de tudo!",
+      color: "bg-orange-500"
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBannerIndex((prev) => (prev + 1) % bannerMessages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [bannerMessages.length]);
+
   const mockDevocionais = [
     {
       id: 1,
@@ -61,6 +99,25 @@ export default function PortalHome() {
   return (
     <div className="min-h-screen bg-gray-50">
       <PortalNavbar />
+
+      {/* Animated Banner */}
+      <div className="relative overflow-hidden">
+        {bannerMessages.map((banner, index) => (
+          <div
+            key={index}
+            className={`${banner.color} text-white py-3 px-4 text-center font-medium transition-all duration-500 absolute w-full ${
+              index === currentBannerIndex
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 -translate-y-full'
+            }`}
+            style={{ position: index === currentBannerIndex ? 'relative' : 'absolute' }}
+            data-testid={`banner-message-${index}`}
+          >
+            <span className="text-lg mr-2">{banner.icon}</span>
+            {banner.text}
+          </div>
+        ))}
+      </div>
 
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white py-20">
