@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { LogOut, User, ChevronDown } from "lucide-react";
+import { LogOut, User, ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,10 +10,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/lib/auth";
 import logoUrl from "@assets/EMAÚS v3 sem fundo_1762038215610.png";
+import { useState } from "react";
 
 export default function PortalNavbar() {
   const [location] = useLocation();
   const { user, logout } = useAuth();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { href: "/portal", label: "Home" },
@@ -54,7 +56,7 @@ export default function PortalNavbar() {
             </div>
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center space-x-4">
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -111,32 +113,45 @@ export default function PortalNavbar() {
                   className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold"
                   data-testid="button-login"
                 >
-                  Entrar
+                  Área do Membro
                 </Button>
               </Link>
             )}
+            
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden text-gray-300 hover:text-orange-400"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              data-testid="button-mobile-menu"
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
           </div>
         </div>
       </div>
 
       {/* Mobile menu */}
-      <div className="md:hidden border-t border-gray-600">
-        <div className="px-2 pt-2 pb-3 space-y-1 bg-gray-800">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`block px-3 py-2 rounded-md text-base font-medium ${
-                location === link.href
-                  ? "text-orange-400 bg-gray-900"
-                  : "text-gray-300 hover:text-orange-400 hover:bg-gray-900"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t border-gray-600">
+          <div className="px-2 pt-2 pb-3 space-y-1 bg-gray-800">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  location === link.href
+                    ? "text-orange-400 bg-gray-900"
+                    : "text-gray-300 hover:text-orange-400 hover:bg-gray-900"
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }

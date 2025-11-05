@@ -10,36 +10,32 @@ export default function PortalHome() {
 
   const heroSlides = [
     {
-      title: "Retiro Espiritual 2025",
-      subtitle: "15-17 de Novembro",
-      description: "Três dias de renovação espiritual e comunhão no Recanto da Paz",
-      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=600&fit=crop",
-      cta: "Inscreva-se Agora",
-      icon: "🎉"
-    },
-    {
-      title: "Culto de Jovens",
-      subtitle: "Todo Sábado às 19h",
-      description: "Louvor, pregação e comunhão na Igreja Presbiteriana",
-      image: "https://images.unsplash.com/photo-1509909756405-be0199881695?w=1200&h=600&fit=crop",
-      cta: "Saiba Mais",
-      icon: "🔥"
-    },
-    {
-      title: "Devocionais Online",
-      subtitle: "Reflexões Diárias",
-      description: "Conteúdo exclusivo para fortalecer sua fé todos os dias",
+      title: "A Fé que Move Montanhas",
+      subtitle: "Devocional Recente",
+      description: "Se tiverdes fé como um grão de mostarda, direis a este monte: Passa daqui para acolá, e há de passar",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop",
-      cta: "Ler Agora",
-      icon: "📖"
+      cta: "Ler Devocional"
     },
     {
-      title: "Semana de Oração",
-      subtitle: "6h às 7h - Todos os Dias",
-      description: "Participe conosco neste momento especial de oração e intercessão",
+      title: "Retiro Espiritual 2025",
+      subtitle: "Próxima Programação",
+      description: "15-17 de Novembro - Três dias de renovação espiritual no Recanto da Paz",
+      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=600&fit=crop",
+      cta: "Ver Detalhes"
+    },
+    {
+      title: "Inscrições Abertas",
+      subtitle: "Retiro Espiritual",
+      description: "Vagas limitadas! Garanta sua inscrição para o Retiro Espiritual 2025",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=1200&h=600&fit=crop",
-      cta: "Participe",
-      icon: "🙏"
+      cta: "Inscreva-se Agora"
+    },
+    {
+      title: "Siga-nos no Instagram",
+      subtitle: "Última Postagem",
+      description: "Confira nossos momentos de comunhão, eventos e mensagens inspiradoras",
+      image: "https://images.unsplash.com/photo-1509909756405-be0199881695?w=1200&h=600&fit=crop",
+      cta: "Ver no Instagram"
     }
   ];
 
@@ -112,10 +108,14 @@ export default function PortalHome() {
         {heroSlides.map((slide, index) => (
           <div
             key={index}
-            className="absolute inset-0 transition-all duration-1000 ease-in-out"
+            className="absolute inset-0 transition-all duration-700 ease-in-out"
             style={{
+              transform: index === currentSlideIndex 
+                ? 'translateX(0)' 
+                : index < currentSlideIndex 
+                  ? 'translateX(-100%)' 
+                  : 'translateX(100%)',
               opacity: index === currentSlideIndex ? 1 : 0,
-              transform: index === currentSlideIndex ? 'scale(1)' : 'scale(1.1)',
             }}
             data-testid={`hero-slide-${index}`}
           >
@@ -130,33 +130,28 @@ export default function PortalHome() {
             {/* Content */}
             <div className="relative h-full flex items-center">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div className="max-w-2xl">
-                  {/* Animated Icon */}
-                  <div className="inline-block mb-4 animate-bounce">
-                    <span className="text-5xl md:text-6xl drop-shadow-lg">{slide.icon}</span>
-                  </div>
-                  
+                <div className="max-w-2xl ml-4 md:ml-12">
                   {/* Title with gradient */}
-                  <h1 className="text-4xl md:text-6xl font-extrabold mb-4 text-white tracking-tight animate-fade-in">
+                  <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-3 md:mb-4 text-white tracking-tight animate-fade-in">
                     <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
                       {slide.title}
                     </span>
                   </h1>
                   
                   {/* Subtitle */}
-                  <p className="text-2xl md:text-3xl font-semibold text-orange-300 mb-4">
+                  <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-orange-300 mb-3 md:mb-4">
                     {slide.subtitle}
                   </p>
                   
                   {/* Description */}
-                  <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+                  <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 md:mb-8 leading-relaxed line-clamp-2 md:line-clamp-none">
                     {slide.description}
                   </p>
                   
                   {/* CTA Button */}
                   <Button 
                     size="lg"
-                    className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold px-10 py-6 text-lg shadow-2xl shadow-orange-500/40 transform hover:scale-105 transition-all"
+                    className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold px-6 md:px-10 py-4 md:py-6 text-base md:text-lg shadow-2xl shadow-orange-500/40 transform hover:scale-105 transition-all"
                     data-testid={`button-hero-cta-${index}`}
                   >
                     {slide.cta} →
