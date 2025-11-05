@@ -6,42 +6,49 @@ import PortalNavbar from "@/components/PortalNavbar";
 import { useState, useEffect } from "react";
 
 export default function PortalHome() {
-  const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
-  const bannerMessages = [
+  const heroSlides = [
     {
-      icon: "📢",
-      text: "Próximo Culto de Jovens - Sábado às 19h na Igreja Presbiteriana",
-      color: "bg-orange-500"
+      title: "Retiro Espiritual 2025",
+      subtitle: "15-17 de Novembro",
+      description: "Três dias de renovação espiritual e comunhão no Recanto da Paz",
+      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=600&fit=crop",
+      cta: "Inscreva-se Agora",
+      icon: "🎉"
     },
     {
-      icon: "🙏",
-      text: "Semana de Oração - Participe das 6h às 7h todos os dias",
-      color: "bg-orange-600"
+      title: "Culto de Jovens",
+      subtitle: "Todo Sábado às 19h",
+      description: "Louvor, pregação e comunhão na Igreja Presbiteriana",
+      image: "https://images.unsplash.com/photo-1509909756405-be0199881695?w=1200&h=600&fit=crop",
+      cta: "Saiba Mais",
+      icon: "🔥"
     },
     {
-      icon: "🎉",
-      text: "Retiro Espiritual 2025 - Inscrições abertas! 15-17 de Novembro",
-      color: "bg-orange-500"
+      title: "Devocionais Online",
+      subtitle: "Reflexões Diárias",
+      description: "Conteúdo exclusivo para fortalecer sua fé todos os dias",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=600&fit=crop",
+      cta: "Ler Agora",
+      icon: "📖"
     },
     {
-      icon: "📖",
-      text: "Novos devocionais disponíveis - Confira as reflexões da semana",
-      color: "bg-orange-600"
-    },
-    {
-      icon: "✨",
-      text: "Siga @umpemaus no Instagram para ficar por dentro de tudo!",
-      color: "bg-orange-500"
+      title: "Semana de Oração",
+      subtitle: "6h às 7h - Todos os Dias",
+      description: "Participe conosco neste momento especial de oração e intercessão",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=1200&h=600&fit=crop",
+      cta: "Participe",
+      icon: "🙏"
     }
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentBannerIndex((prev) => (prev + 1) % bannerMessages.length);
-    }, 4000);
+      setCurrentSlideIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
     return () => clearInterval(interval);
-  }, [bannerMessages.length]);
+  }, [heroSlides.length]);
 
   const mockDevocionais = [
     {
@@ -100,67 +107,97 @@ export default function PortalHome() {
     <div className="min-h-screen bg-gray-100">
       <PortalNavbar />
 
-      {/* Animated Banner */}
-      <div className="relative overflow-hidden bg-gray-900">
-        {bannerMessages.map((banner, index) => (
+      {/* Hero Banner - Grande e Rotativo */}
+      <div className="relative h-[500px] md:h-[600px] overflow-hidden">
+        {heroSlides.map((slide, index) => (
           <div
             key={index}
-            className="text-white py-3 px-4 text-center font-medium transition-all duration-500 absolute w-full"
-            style={{ 
-              position: index === currentBannerIndex ? 'relative' : 'absolute',
-              opacity: index === currentBannerIndex ? 1 : 0,
-              transform: index === currentBannerIndex ? 'translateY(0)' : 'translateY(-100%)'
+            className="absolute inset-0 transition-all duration-1000 ease-in-out"
+            style={{
+              opacity: index === currentSlideIndex ? 1 : 0,
+              transform: index === currentSlideIndex ? 'scale(1)' : 'scale(1.1)',
             }}
-            data-testid={`banner-message-${index}`}
+            data-testid={`hero-slide-${index}`}
           >
-            <span className="text-lg mr-2">{banner.icon}</span>
-            {banner.text}
-            <span className="ml-2 text-orange-400">•</span>
+            {/* Background Image with Overlay */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${slide.image})` }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-800/80 to-transparent"></div>
+            </div>
+
+            {/* Content */}
+            <div className="relative h-full flex items-center">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div className="max-w-2xl">
+                  {/* Animated Icon */}
+                  <div className="inline-block mb-4 animate-bounce">
+                    <span className="text-5xl md:text-6xl drop-shadow-lg">{slide.icon}</span>
+                  </div>
+                  
+                  {/* Title with gradient */}
+                  <h1 className="text-4xl md:text-6xl font-extrabold mb-4 text-white tracking-tight animate-fade-in">
+                    <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
+                      {slide.title}
+                    </span>
+                  </h1>
+                  
+                  {/* Subtitle */}
+                  <p className="text-2xl md:text-3xl font-semibold text-orange-300 mb-4">
+                    {slide.subtitle}
+                  </p>
+                  
+                  {/* Description */}
+                  <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
+                    {slide.description}
+                  </p>
+                  
+                  {/* CTA Button */}
+                  <Button 
+                    size="lg"
+                    className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold px-10 py-6 text-lg shadow-2xl shadow-orange-500/40 transform hover:scale-105 transition-all"
+                    data-testid={`button-hero-cta-${index}`}
+                  >
+                    {slide.cta} →
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
-      </div>
 
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-        <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 right-0 w-80 h-80 bg-yellow-500/10 rounded-full blur-3xl"></div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-block mb-6">
-            <span className="text-6xl md:text-7xl animate-pulse">🔥</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight" data-testid="text-hero-title">
-            Bem-vindo à <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">UMP Emaús</span>
-          </h1>
-          <p className="text-2xl md:text-3xl mb-6 font-semibold text-gray-300">
-            União de Mocidade Presbiteriana
-          </p>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-gray-400">
-            Um espaço de fé, comunhão e crescimento espiritual para jovens
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/portal/devocionais">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold px-8 py-6 text-lg shadow-lg shadow-orange-500/30"
-                data-testid="button-hero-devocionais"
-              >
-                📖 Ver Devocionais
-              </Button>
-            </Link>
-            <Link href="/portal/programacoes">
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="bg-transparent border-2 border-gray-600 text-gray-200 hover:bg-gray-800 hover:border-orange-400 hover:text-orange-400 font-bold px-8 py-6 text-lg"
-                data-testid="button-hero-programacoes"
-              >
-                📅 Próximas Programações
-              </Button>
-            </Link>
-          </div>
+        {/* Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlideIndex(index)}
+              className={`transition-all duration-300 ${
+                index === currentSlideIndex
+                  ? 'w-12 h-3 bg-gradient-to-r from-orange-500 to-yellow-500'
+                  : 'w-3 h-3 bg-gray-400 hover:bg-gray-300'
+              } rounded-full`}
+              data-testid={`slide-indicator-${index}`}
+            />
+          ))}
         </div>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={() => setCurrentSlideIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-gray-800/50 hover:bg-gray-700/70 text-white p-3 rounded-full backdrop-blur-sm transition-all z-10"
+          data-testid="button-prev-slide"
+        >
+          <span className="text-2xl">‹</span>
+        </button>
+        <button
+          onClick={() => setCurrentSlideIndex((prev) => (prev + 1) % heroSlides.length)}
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-gray-800/50 hover:bg-gray-700/70 text-white p-3 rounded-full backdrop-blur-sm transition-all z-10"
+          data-testid="button-next-slide"
+        >
+          <span className="text-2xl">›</span>
+        </button>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
