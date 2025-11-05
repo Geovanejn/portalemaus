@@ -129,29 +129,29 @@ export default function PortalHome() {
 
             {/* Content */}
             <div className="relative h-full flex items-center">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div className="max-w-2xl ml-4 md:ml-12">
+              <div className="max-w-7xl mx-auto px-16 sm:px-6 lg:px-8 w-full">
+                <div className="max-w-2xl mx-auto md:mx-0 md:ml-12 text-center md:text-left">
                   {/* Title with gradient */}
-                  <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-3 md:mb-4 text-white tracking-tight animate-fade-in">
+                  <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold mb-2 md:mb-4 text-white tracking-tight animate-fade-in">
                     <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
                       {slide.title}
                     </span>
                   </h1>
                   
                   {/* Subtitle */}
-                  <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-orange-300 mb-3 md:mb-4">
+                  <p className="text-lg sm:text-2xl md:text-3xl font-semibold text-orange-300 mb-2 md:mb-4">
                     {slide.subtitle}
                   </p>
                   
                   {/* Description */}
-                  <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 md:mb-8 leading-relaxed line-clamp-2 md:line-clamp-none">
+                  <p className="text-sm sm:text-lg md:text-xl text-gray-300 mb-4 md:mb-8 leading-relaxed line-clamp-2 md:line-clamp-none">
                     {slide.description}
                   </p>
                   
                   {/* CTA Button */}
                   <Button 
                     size="lg"
-                    className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold px-6 md:px-10 py-4 md:py-6 text-base md:text-lg shadow-2xl shadow-orange-500/40 transform hover:scale-105 transition-all"
+                    className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold px-6 md:px-10 py-3 md:py-6 text-sm md:text-lg shadow-2xl shadow-orange-500/40 transform hover:scale-105 transition-all"
                     data-testid={`button-hero-cta-${index}`}
                   >
                     {slide.cta} →
